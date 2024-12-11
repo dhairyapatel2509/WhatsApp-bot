@@ -11,14 +11,19 @@ whatsapp.on('qr', qr => {
 });
 
 whatsapp.on("message", async message => {
+    // Check for the specific date
     if (message.body === "30/10/2023") {
         message.reply("The day she said 'Yes!' at 3:44 AM.");
-    } else if (message.body === "Dhiyu" || message.body === "dhiyuuuu" || message.body === "dhiyuuu" || message.body === "dhiyuu" || message.body === "Dhiyuuu" || message.body === "Dhiyuu" || message.body === "Dhiyuuu") {
+    } 
+    // Match variations of "Dhiyu" (case-insensitive and handle extra "u"s)
+    else if (/^dhiyu{2,}$|dhiyu$/i.test(message.body)) {
         message.reply("Dhairya ♥️ digu");
-    } else if (message.body === "hello" || message.body === "Hello" || message.body === "Hey") {
+    } 
+    // Handle greetings
+    else if (["hello", "Hello", "Hey"].includes(message.body)) {
         message.reply("Hey there! Dhairya here. Jay Swaminarayan! How can I help you? Please drop a message as I may be busy.");
     }     
-})
+});
 
 whatsapp.on("ready", () => {
     console.log("Client is ready!")
