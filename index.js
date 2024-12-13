@@ -1,6 +1,7 @@
 const express = require('express')
 const messageRouter = require("./routers/message.js"); 
 const whatsapp = require('./services/WhatsappClient.js');
+
 whatsapp.initialize();
  
 const app = express();
